@@ -1,0 +1,30 @@
+classDiagram
+
+    class Empresa{
+
+    }
+
+    class Persona{
+        - nombre: String
+        - edad: int
+    }   
+
+    class Empleado{
+        - sueldoBruto: double
+    }
+
+    class Cliente{
+        - teléfono: String
+    }
+   
+    class Directivo{
+        - sueldoBruto: double
+    }
+
+    Persona <|-- Empleado
+    Persona <|-- Cliente
+    Empleado <|-- Directivo
+
+    Directivo "1" o-- "1.." Empleado : emplea
+    Empresa *-- Cliente
+    Empresa *-- Empleado
