@@ -39,6 +39,6 @@ classDiagram
     Libro "1.." --* "1-1" Autor
     Copia --|> Libro
     Libro "1" --* "1..*" Copia
-    Lector "1" --o "1..3" Copia
+    Lector "1..*" --o "1..3" Copia
     Libro *-- Biblioteca
     Copia *-- Biblioteca
