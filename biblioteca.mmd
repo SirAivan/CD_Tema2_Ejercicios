@@ -32,13 +32,15 @@ classDiagram
         -diasMultado: int
     }
 
-    class Préstamo{
-
+    class Prestamo{
+        -fechaInicio: Date
+        -fechaDevolucion: Date
     }
     
     Libro "1.." --* "1-1" Autor
     Copia --|> Libro
     Libro "1" --* "1..*" Copia
-    Lector "1..*" --o "1..3" Copia
+    Lector "1..*" --o "1..*" Prestamo
+    Copia "1" --o "1..*" Prestamo
     Libro *-- Biblioteca
     Copia *-- Biblioteca
