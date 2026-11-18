@@ -1,0 +1,21 @@
+classDiagram
+
+ class Cliente{
+    - nombre: String
+ }
+
+ class Pedido{
+    - fecha: date
+    - estado: EstadoPedido
+    + calcular_total
+    + hay_retraso
+ }
+
+ class Producto{
+    - existencias: int
+    - precio: int
+ }
+
+ class Pago{
+    
+ }
