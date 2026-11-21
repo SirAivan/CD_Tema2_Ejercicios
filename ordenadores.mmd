@@ -1,22 +1,27 @@
 classDiagram
 
     class Servidor{
-
+        + generarMensaje (mensaje: long): long 
     }
 
     class PC{
-
+        + generarMensaje (mensaje: long): long
     }
 
     class Impresora{
-
+        - probabilidadAveria: int
+        - tiempoAveria: int
     }
 
     class Hub{
-
+        - numeroPuertos: int
+        - probabilidadPerderMensaje: int
     }
 
     class CableRed{
         
     }
 
+Hub "1-1"o--"1..*" PC
+Hub "1..*"o--"1..*" Servidor
+Hub "1-1"-->"1..*" Hub

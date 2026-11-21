@@ -7,13 +7,14 @@ classDiagram
  class Pedido{
     - fecha: date
     - estado: EstadoPedido
-    + calcular_total
-    + hay_retraso
+    - impuestos: double
+    + calcular_total (): double
+    + hay_retraso (): boolean
  }
 
  class Producto{
     - existencias: int
-    - precio: int
+    - precio: double
  }
 
  class Pago{
