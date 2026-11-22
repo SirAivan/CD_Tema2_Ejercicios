@@ -1,0 +1,27 @@
+classDiagram
+    class Shape{
+        <<interface>>
+        +getArea(): int
+        +getPerimeter(): int
+    }
+
+    class ShapeCalculator{
+        +calcularArea(Shapes: List ~Shape~):
+    }
+
+    class Circle{
+
+    }
+
+    class Rectangle{
+
+    }
+
+    class Triangle{
+
+    }
+
+    Shape <|-- Circle
+    Shape <|-- Rectangle
+    Shape <|-- Triangle
+    Shape <-- ShapeCalculator
