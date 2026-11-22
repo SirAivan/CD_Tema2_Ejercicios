@@ -1,0 +1,36 @@
+classDiagram{
+class Paciente{
+    -numHistoriaClinica: int
+    -nombre: String
+    -direccion: String
+}
+
+class Analisis{
+    -numReferencia: int
+    -tipoAnalisis: String
+    -fechaRealizacion: date
+    -solicitante:
+    +getEnfermeros (): int
+    +getResultado (): String
+}
+
+%%class Personal{
+    %%-numEmpleado: int
+    %%-nombre: String
+    %%-tipo: String
+    %%-especialidad: ?
+%%} 
+
+class Medico{
+    -numEmpleado: int
+    -nombre: String
+    -tipo: String
+    -especialidad: String
+}
+
+class Enfermedo{
+    -numEmpleado: int
+    -nombre: String
+    -tipo: String
+}
+}
