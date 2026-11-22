@@ -1,0 +1,23 @@
+classDiagram
+    class Producto{
+    -nombre: String
+    -precio: double
+    -categoria: String
+    }
+
+    class Carrito{
+        -productos: List~Producto~
+        +añadirProducto(producto: String): void
+        +quitarProducto(producto String): void
+        +calcularTotal(List~Producto~): double
+    }
+
+    class Descuento{
+        <<interfaz>>
+        -percentageDiscount: double
+        -fixedDiscount: double
+        +apply(double total): double
+    }
+
+Descuento o-- Carrito
+Carrito o-- Producto
