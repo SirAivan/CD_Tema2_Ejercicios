@@ -4,9 +4,10 @@ classDiagram
     - nombre: String
  }
 
+note for Pedido "<strong> EstadoPedidoEnum <strong> <br> PENDIENTE <br> PAGADO <br> PROCESANDO <br> ENVIADO <br> ENTREGADO"
  class Pedido{
     - fecha: date
-    - estado: EstadoPedido
+    - estado: EstadoPedidoEnum
     - impuestos: double
     + calcular_total (): double
     + hay_retraso (): boolean
@@ -17,7 +18,7 @@ classDiagram
     - precio: double
  }
 
-note for Pago "<strong> tipoPagoEnum </strong> <br> TARJETA DE CREDITO <br> EFECTIVO <br> CHEQUE"
+note for Pago "<strong> TipoPagoEnum </strong> <br> TARJETA DE CREDITO <br> EFECTIVO <br> CHEQUE"
  class Pago{
-    -tipo: tipoPagoEnum
+    -tipo: TipoPagoEnum
  }

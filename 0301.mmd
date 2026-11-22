@@ -1,7 +1,9 @@
-classDiagram{
+classDiagram
+
     class Biblioteca{
-        +getFechaAlta: Date
-        +get
+        +getFechaAlta (): Date
+        +getAñoPublicacion (): Date
+        +getFechaPrestamo (): Date
     }
 
     class Libro{
@@ -20,6 +22,7 @@ classDiagram{
     class Prestamo{
         -fechaPrestamo: Date
         -fechaDevolucion: Date
-        -
     }
-}
+
+    Socio "1..*"-->"1..*" Prestamo : tiene
+    Libro "1..*"-->"1" Socio
