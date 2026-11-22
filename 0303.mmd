@@ -1,0 +1,21 @@
+classDiagram
+    class Empresa{
+        -nombre: String
+        -departamentos: List~Departamento~
+        +getEmpleadoMaxSalario(): int
+    }
+
+    class Departamento{
+        -nombre: String
+        -empleados: List~Empleado~
+        +getSumaSalarios(List~Empleado~): int
+    }
+
+    class Empleado{
+        -nombre: String
+        -puesto: String
+        -salario: int
+    }
+
+    Empresa *-- Departamento
+    Departamento o-- Empleado
