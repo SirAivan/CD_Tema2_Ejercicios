@@ -23,6 +23,6 @@ classDiagram
         -fechaPrestamo: Date
         -fechaDevolucion: Date
     }
-
+    Biblioteca o-- Libro
     Socio "1..*"-->"1..*" Prestamo : tiene
     Libro "1..*"-->"1" Socio

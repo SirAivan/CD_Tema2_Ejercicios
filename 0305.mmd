@@ -1,0 +1,67 @@
+classDiagram
+    
+note for Hotel "<strong> CategoriaHotelEnum </strong> <br>3 ESTRELLAS<br>4 ESTRELLAS<br>5 ESTRELLAS"
+    class Hotel{
+        -nombre: String
+        -direccion: String
+        -categoria: CategoriaHotelEnum
+        -consolasRetro: List~ConsolaRetro~
+        +registrarCliente(cliente = String): void
+        +getHabitacionCliente(List ~Cliente~, List ~Habitacion~): int
+    }
+
+note for Habitacion"<strong>EstadoHabitacionEnum</strong> <br>LIBRE<br>OCUPADA"
+note for Habitacion"<strong>TipooHabitacionEnum</strong> <br>BASICA<br>ARCADE<br>PREMIUM<br>RETRO GAMER"
+    class Habitacion{
+        #numero: int
+        #identificador: int
+        #precioNoche: int
+        #estado: EstadoHabitacionEnum
+        #tipo: TipoHabitacionEnum
+    }
+
+    class RetroGamer{
+
+    }
+
+    class ConsolaRetro{
+        #codigo: int
+        #nombre: String
+        #marca: String
+        #añoLanzamiento: Date
+    }
+
+    class ConsolaEspecial{
+        
+
+    }
+
+    class Gestion{
+        +moverConsola(int Habitacion): boolean
+        +comprarConsola(consola = String): String
+        +eliminarConsola(consola = String): void 
+    }
+
+    class Cliente{
+        -nombre: String
+        -DNI: String$
+        -fechaNacimiento: Date$
+        +alquilarConsola(consola = String): String
+    }
+
+%%Composicion porque el hotel necesita de gestion para realizar ciertas acciones, y sin ella no habría manera
+Gestion "1"*--"1..*" Hotel
+%%Composicion porque las habitaciones necesitan estar en un hotel, sin uno no hay lugar en el que poder construir habitaciones
+Hotel "1..*"*--"1..*" Habitacion
+%%Asociación porque hotel y cliente son clases independientes la una de la otra, no se necesitan para existir
+Hotel "1"<--"0..*" Cliente
+%%Herencia porque RetroGamer es un tipo especifico de habitación en la cual solo puede haber consolas especiales, por eso la distinción en una clase distinta
+Habitacion <|-- RetroGamer
+%%Herencia porque una consola especial es un tipo concreto de consola retro, por lo que debe tener los mismos atributos que consola retro
+ConsolaRetro <|-- ConsolaEspecial
+%%Agregacion porque las habitaciones retro gamer solo pueden tener consolas especiales, pero pueden existir sin ellas
+ConsolaEspecial "0..*"o--"0..*" RetroGamer
+%%Agregacion porque las habitaciones pueden tener consolas retro, pero ambos pueden existir independientemente
+Habitacion "0..*"o--"0..*" ConsolaRetro
+%%Agregacion porque las habitaciones pueden tener consolas especiales, que son un tipo de consola retro, pero ambos pueden existir independientemente
+Habitacion "0..*"o--"0..*" ConsolaEspecial
