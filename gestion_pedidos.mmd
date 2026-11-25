@@ -1,24 +1,61 @@
 classDiagram
 
- class Cliente{
-    - nombre: String
- }
+class Cliente{
+   - nombre: String
+}
 
 note for Pedido "<strong> EstadoPedidoEnum </strong> <br> PENDIENTE <br> PAGADO <br> PROCESANDO <br> ENVIADO <br> ENTREGADO"
- class Pedido{
-    - fecha: date
-    - estado: EstadoPedidoEnum
-    - impuestos: double
-    + calcular_total (): double
-    + hay_retraso (): boolean
- }
+class Pedido{
+   - fecha: date
+   - estado: EstadoPedidoEnum
 
- class Producto{
-    - existencias: int
-    - precio: double
- }
+   + calcularCoste (): double
+   + hay_retraso (): boolean
+}
 
-note for Pago "<strong> TipoPagoEnum </strong> <br> TARJETA DE CREDITO <br> EFECTIVO <br> CHEQUE"
- class Pago{
-    -tipo: TipoPagoEnum
- }
+class Producto{
+   - existencias: int
+   - precio: double
+   - impuestos: double
+   
+   +hayStock(cantidad: int): boolean
+
+}
+
+class LineaPedido{
+   - cantidad: int
+}
+
+class Pago{
+   <<abstract>>
+   - tipo: TipoPagoEnum
+}
+
+class Tarjeta{
+   - fechaCaducidad: date
+   - numero: String
+   - tipo: String
+
+}
+
+class Efectivo{
+   - moneda: String
+}
+
+class Cheque{
+   - nombre: String
+   - entidad: String
+}
+
+
+Pedido "0..*"--*"1" Cliente
+Producto "1"*--"0..*" LineaPedido
+LineaPedido "1..*"--*"1" Pedido
+
+Pago <|-- Tarjeta
+Pago <|-- Efectivo 
+Pago <|-- Cheque
+
+Pedido -- EstadoPedido
+
+Pedido "1"*--"0..*" Pago: LineasPago
